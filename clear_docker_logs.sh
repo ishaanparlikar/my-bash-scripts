@@ -4,4 +4,4 @@
 docker container prune -f
 
 # Clear unused Docker images
-docker image prune -a -f
+docker image prune -a --filter "label!=latest" -f
