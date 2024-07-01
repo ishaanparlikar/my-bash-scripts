@@ -1,0 +1,12 @@
+[Unit]
+Description=Check and mount NFS storage if necessary
+
+[Service]
+Type=simple
+User=root
+ExecStart=/path/to/your/script/nfs_check_and_mount.sh
+WorkingDirectory=
+
+[Install]
+WantedBy=default.target
+
