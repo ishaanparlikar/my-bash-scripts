@@ -1,0 +1,11 @@
+Description=Network Check and K3S Startup Script
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash /home/admin/scripts/network_restart.sh
+WorkingDirectory=/home/admin/scripts
+
+[Install]
+WantedBy=default.target
