@@ -2,7 +2,7 @@
 
 # Replace these variables with your NFS server details and mount point
 NFS_SERVER=172.16.0.6
-NFS_MOUNT_POINT=/mnt/media-tank
+NFS_MOUNT_POINT=/mnt
 DOCKER_SERVICE=docker
 LOG_FILE=/var/log/nfs_check_and_mount.log
 
@@ -50,7 +50,8 @@ while true; do
         break  # Exit loop if NFS storage is mounted
     else
         log_message "NFS storage is not mounted. Mounting now..."
-        mount -t nfs $NFS_SERVER:$NFS_MOUNT_POINT $NFS_MOUNT_POINT
+        mount -t nfs $NFS_SERVER:$NFS_MOUNT_POINT/backup-tank/docker $NFS_MOUNT_POINT/docker_data
+        mount -t nfs $NFS_SERVER:$NFS_MOUNT_POINT/media-tank/data $NFS_MOUNT_POINT/arr
         
         # Check if mount was successful
         if [ $? -eq 0 ]; then
